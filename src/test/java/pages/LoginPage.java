@@ -25,7 +25,7 @@ public class LoginPage {
         driver.findElement(loginBtn).click();
     }
 
-public boolean isMessageAppear() {
+    public boolean isMessageAppear() {
         return driver.findElement(error).isDisplayed();
     }
 
