@@ -25,6 +25,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
+
     }
 
     @AfterMethod
