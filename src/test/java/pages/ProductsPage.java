@@ -14,11 +14,6 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
-    public boolean isPageLoaded(final String pageTitle) {
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(pageTitle));
-        return driver.findElement(By.xpath(TEXT_LOCATOR_PATTERN.formatted(pageTitle))).isDisplayed();
-    }
-
     public void addToCart(final String goodsName) {
         By addGoodsToCart = By.xpath(ADD_TO_CART_BUTTON_PATTERN.formatted(goodsName));
         driver.findElement(addGoodsToCart).click();
@@ -32,4 +27,7 @@ public class ProductsPage extends BasePage {
         return driver.findElement(cartBadge).getText();
     }
 
+    public void switchToCart() {
+        driver.findElement(cartBadge).click();
+    }
 }
