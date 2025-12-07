@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import user.User;
 
 public class LoginPage extends BasePage {
     By userField = By.xpath("//input[@id='user-name']");
@@ -17,9 +18,9 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL);
     }
 
-    public void login(final String userName, final String passwordName) {
-        enterLoginName(userName);
-        driver.findElement(passwordField).sendKeys(passwordName);
+    public void login(User user) {
+        enterLoginName(user.getEmail());
+        driver.findElement(passwordField).sendKeys(user.getPassword());
         driver.findElement(loginBtn).click();
     }
 
@@ -33,9 +34,5 @@ public class LoginPage extends BasePage {
 
     public String errorMessageText() {
         return driver.findElement(error).getText();
-    }
-
-    public void loginBtnClick() {
-        driver.findElement(loginBtn).click();
     }
 }
