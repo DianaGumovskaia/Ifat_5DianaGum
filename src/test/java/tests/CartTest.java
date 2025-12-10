@@ -11,7 +11,6 @@ public class CartTest extends BaseTest {
     public void checkGoodsInCart() {
         System.out.println("CartTest inc is running in thread: " + Thread.currentThread().getId());
 
-
         loginPage.open();
         loginPage.login(withAdminPermission());
         productsPage.isPageLoaded("Products");
