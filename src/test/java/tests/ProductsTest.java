@@ -10,7 +10,6 @@ public class ProductsTest extends BaseTest {
     public void checkGoodsAdded() {
         System.out.println("ProdTest inc is running in thread: " + Thread.currentThread().getId());
 
-
         loginPage.open();
         loginPage.login(withAdminPermission());
         productsPage.isPageLoaded("Products");

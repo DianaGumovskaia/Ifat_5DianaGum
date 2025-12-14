@@ -24,5 +24,4 @@ public class UserFactory {
     public static User emptyUser() {
         return new User("", "");
     }
-
 }

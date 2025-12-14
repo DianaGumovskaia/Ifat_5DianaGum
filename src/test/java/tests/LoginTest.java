@@ -61,7 +61,6 @@ public class LoginTest extends BaseTest {
     public void checkCorrectLogin() {
         System.out.println("LoginTest corr is running in thread: " + Thread.currentThread().getId());
 
-
         loginPage.open();
         loginPage.login(withAdminPermission());
 
