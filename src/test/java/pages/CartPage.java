@@ -23,7 +23,8 @@ public class CartPage extends BasePage {
         return names;
     }
 
-    public void removeFromCart(final int cartsOrder) {
+    public CartPage removeFromCart(final int cartsOrder) {
         driver.findElements(By.xpath(TEXT_LOCATOR_PATTERN.formatted("Remove"))).get(cartsOrder).click();
+        return this;
     }
 }

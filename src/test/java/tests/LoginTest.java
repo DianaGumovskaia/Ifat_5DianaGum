@@ -49,8 +49,9 @@ public class LoginTest extends BaseTest {
     public void checkIncorrectLogin(User user, String errorMsg) {
         System.out.println("LoginTest inc is running in thread: " + Thread.currentThread().getId());
 
-        loginPage.open();
-        loginPage.login(user);
+        loginPage
+                .open()
+                .login(user);
 
         //AllureUtils.takeScreenshot(driver);
         assertTrue(loginPage.isMessageAppear(), "Сообщение об ошибке не отобразилось");
@@ -61,8 +62,9 @@ public class LoginTest extends BaseTest {
     public void checkCorrectLogin() {
         System.out.println("LoginTest corr is running in thread: " + Thread.currentThread().getId());
 
-        loginPage.open();
-        loginPage.login(withAdminPermission());
+        loginPage
+                .open()
+                .login(withAdminPermission());
 
         assertTrue(productsPage.isPageLoaded(PRODUCTS.getDisplayName()), "Название страницы не отобразилось");
     }

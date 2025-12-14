@@ -10,11 +10,13 @@ public class ProductsTest extends BaseTest {
     public void checkGoodsAdded() {
         System.out.println("ProdTest inc is running in thread: " + Thread.currentThread().getId());
 
-        loginPage.open();
-        loginPage.login(withAdminPermission());
+        loginPage
+                .open()
+                .login(withAdminPermission());
         productsPage.isPageLoaded("Products");
-        productsPage.addToCart("Test.allTheThings() T-Shirt (Red)");
-        productsPage.addToCart(2);
+        productsPage
+                .addToCart("Test.allTheThings() T-Shirt (Red)")
+                .addToCart(2);
         assertEquals(productsPage.checkGoodsQuantity(), "2");
     }
 }
