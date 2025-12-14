@@ -9,5 +9,4 @@
             <class name="tests.CartTest"/>
         </classes>
     </test>
-
 </suite>
