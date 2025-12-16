@@ -1,17 +1,24 @@
+package tests;
+
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
+import static user.UserFactory.withAdminPermission;
 
 public class CartTest extends BaseTest {
 
     @Test
     public void checkGoodsInCart() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        System.out.println("CartTest inc is running in thread: " + Thread.currentThread().getId());
+
+        loginPage
+                .open()
+                .login(withAdminPermission());
         productsPage.isPageLoaded("Products");
-        productsPage.addToCart("Test.allTheThings() T-Shirt (Red)");
-        productsPage.addToCart("Sauce Labs Fleece Jacket");
-        productsPage.switchToCart();
+        productsPage
+                .addToCart("Test.allTheThings() T-Shirt (Red)")
+                .addToCart("Sauce Labs Fleece Jacket")
+                .switchToCart();
         cartPage.isPageLoaded("Your Cart");
         assertEquals(cartPage.getProductsNames().size(), 2);
         assertFalse(cartPage.getProductsNames().isEmpty());
@@ -20,12 +27,14 @@ public class CartTest extends BaseTest {
 
     @Test
     public void checkRemoveBtn() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage
+                .open()
+                .login(withAdminPermission());
         productsPage.isPageLoaded("Products");
-        productsPage.addToCart("Test.allTheThings() T-Shirt (Red)");
-        productsPage.addToCart("Sauce Labs Fleece Jacket");
-        productsPage.switchToCart();
+        productsPage
+                .addToCart("Test.allTheThings() T-Shirt (Red)")
+                .addToCart("Sauce Labs Fleece Jacket")
+                .switchToCart();
         cartPage.isPageLoaded("Your Cart");
         assertEquals(cartPage.getProductsNames().size(), 2);
         cartPage.removeFromCart(1);

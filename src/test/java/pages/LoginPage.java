@@ -1,7 +1,9 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import user.User;
 
 public class LoginPage extends BasePage {
     By userField = By.xpath("//input[@id='user-name']");
@@ -13,29 +15,33 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void open() {
+    @Step("Открытие страницы")
+    public LoginPage open() {
         driver.get(BASE_URL);
+        return this;
     }
 
-    public void login(final String userName, final String passwordName) {
-        enterLoginName(userName);
-        driver.findElement(passwordField).sendKeys(passwordName);
+    @Step("Авторизация под кредами пользователя: логин = {user.email}, пароль = {*****}")
+    public LoginPage login(User user) {
+        enterLoginName(user.getEmail());
+        driver.findElement(passwordField).sendKeys(user.getPassword());
         driver.findElement(loginBtn).click();
+        return this;
     }
 
-    public void enterLoginName(final String userName) {
+    @Step("Вводим логин")
+    public LoginPage enterLoginName(final String userName) {
         driver.findElement(userField).sendKeys(userName);
+        return this;
     }
 
+    @Step("Отображение сообщения об ошибке")
     public boolean isMessageAppear() {
         return driver.findElement(error).isDisplayed();
     }
 
+    @Step("Получаем текст из сообщения об ошибке")
     public String errorMessageText() {
         return driver.findElement(error).getText();
-    }
-
-    public void loginBtnClick() {
-        driver.findElement(loginBtn).click();
     }
 }
