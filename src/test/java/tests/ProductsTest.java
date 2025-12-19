@@ -13,7 +13,8 @@ public class ProductsTest extends BaseTest {
         loginPage
                 .open()
                 .login(withAdminPermission());
-        productsPage.isPageLoaded("Products");
+        productsPage
+                .isPageLoaded("Products");
         productsPage
                 .addToCart("Test.allTheThings() T-Shirt (Red)")
                 .addToCart(2);

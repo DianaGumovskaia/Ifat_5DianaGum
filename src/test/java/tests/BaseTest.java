@@ -57,5 +57,6 @@ public class BaseTest {
     public void close() {
         driver.manage().deleteAllCookies();
         driver.quit();
+        driver.close();
     }
 }
